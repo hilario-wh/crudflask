@@ -1,0 +1,32 @@
+{% extends 'bootstrap/base.html' %}
+{% block head %}
+    {{ super()}}
+    <title>
+        {% block title %}
+        App | 
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="">
+{% endblock head %}
+
+{% block body %}
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock navbar %}
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" data-dismiss="alert" class="close">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% block content %}
+        {% endblock content %}
+    </div>
+    
+    {% block scripts %}
+        {{ super() }}
+        <script src="https://kit.fontawesome.com/ff754d049a.js" crossorigin="anonymous"></script>
+    {% endblock scripts %}
+{% endblock body %}

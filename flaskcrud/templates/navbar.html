@@ -1,0 +1,68 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" 
+                class="navbar-toggle collapsed" 
+                data-toggle="collapse" 
+                data-target="#navbar" 
+                aria-expanded="false"
+                aria-controls="navbar"
+            >
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('books.list_books') }}">CRUD Flask</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" 
+                        class="dropdown-toggle" 
+                        data-toggle="dropdown" 
+                        role="button" 
+                        aria-haspopup="true" 
+                        aria-expanded="false"
+                    >
+                        Libros <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('books.add_book') }}">Nuevo</a></li>
+                        <li><a href="{{ url_for('books.list_books') }}">Listar</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" 
+                        class="dropdown-toggle" 
+                        data-toggle="dropdown" 
+                        role="button" 
+                        aria-haspopup="true" 
+                        aria-expanded="false"
+                    >
+                        Autores <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('authors.add_author') }}">Nuevo</a></li>
+                        <li><a href="{{ url_for('authors.list_authors') }}">Listar</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" 
+                        class="dropdown-toggle" 
+                        data-toggle="dropdown" 
+                        role="button" 
+                        aria-haspopup="true" 
+                        aria-expanded="false"
+                    >
+                        Editoriales <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('publishers.add_publisher') }}">Nuevo</a></li>
+                        <li><a href="{{ url_for('publishers.list_publishers') }}">Listar</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>

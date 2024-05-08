@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ super() }}
+    Lista de Editoriales
+{% endblock %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Lista de Editoriales</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>Estado</th>
+                        <th>País</th>
+                        <th>Sitio web</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for publisher in publishers %}
+                        <tr>
+                            <td>{{ publisher.id }}</td>
+                            <td>{{ publisher.name }}</td>
+                            <td>{{ publisher.address }}</td>
+                            <td>{{ publisher.city }}</td>
+                            <td>{{ publisher.state }}</td>
+                            <td>{{ publisher.country }}</td>
+                            <td>{{ publisher.website }}</td>
+                            <td>
+                                <a href="{{ url_for('publishers.delete_publisher', publisher_id=publisher.id) }}" class="btn btn-danger btn-sm">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </a>
+                                <a href="{{ url_for('publishers.edit_publisher', publisher_id=publisher.id) }}" class="btn btn-primary btn-sm">
+                                    <i class="fa-regular fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

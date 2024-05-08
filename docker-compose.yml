@@ -1,0 +1,36 @@
+version: '2.17.3'
+
+services:
+  mysql:
+    image: 'mysql:8.0.3'
+    restart: always
+    ports:
+      - 3307:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=flaskcrud
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+  
+  flaskcrud:
+    build: .
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/flaskcrud
+    depends_on:
+      - mysql
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=user
+      - DB_PASSWORD=user
+      - DB_NAME=flaskcrud
+      - SECRET_KEY='skdhf3453b45ui3n4fub45b645jh6b456'
+
+volumes:
+  .:
+  mysql_data:
